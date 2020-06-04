@@ -1,0 +1,6 @@
+<ng-container *ngIf="pokemonObservable | async as pokemon">
+  <h1> Id: {{ pokemon.id }}</h1>
+  <h1>Title: {{ pokemon.title }}</h1>
+
+  <img src="{{ pokemon.thumbnailUrl}}">
+</ng-container>
