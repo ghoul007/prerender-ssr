@@ -1,27 +1,53 @@
-# Ssr
+# Prerender Angular App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Scripts
 
-## Build
+Use schematics to add the Angular Universal module in our project
+```
+ng add @nguniversal/express-engine
+```
+ 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+ ##  Prerender
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Open angular.json, and go to the new prerender build options
 
-## Running end-to-end tests
+```
+"prerender": {
+    "builder": "@nguniversal/builders:prerender",
+    "options": {
+    "browserTarget": "ssr:build:production",
+    "serverTarget": "ssr:server:production",
+    "routesFile": "./routes.txt" // <-- Here you should put the file routes  
+    },
+    "configurations": {
+    "production": {}
+    }
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+routes.txt
+```
+/1
+/2
+/3
+/4
+/5
+/6
+/7
+/8
+/9
+...
 
-## Further help
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run the command
+```
+npm run prerender
+```

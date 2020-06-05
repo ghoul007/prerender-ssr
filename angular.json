@@ -157,9 +157,7 @@
           "options": {
             "browserTarget": "ssr:build:production",
             "serverTarget": "ssr:server:production",
-            "routes": [
-              "/"
-            ]
+            "routesFile": "./routes.txt"
           },
           "configurations": {
             "production": {}

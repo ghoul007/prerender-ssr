@@ -9,5 +9,27 @@
 </head>
 <body>
   <app-root></app-root>
+
+  <script>
+    let perfomanceMetrics = {};
+const observer = new PerformanceObserver(list => {
+  for (const entry of list.getEntries()) {
+    // `entry` is a PerformanceEntry instance.
+    // `name` will be either 'first-paint' or 'first-contentful-paint'.
+    const metricName = entry.name;
+    const time = Math.round(entry.startTime + entry.duration);
+    if (metricName === "first-paint") {
+      perfomanceMetrics.fp = time;
+    }
+    if (metricName === "first-contentful-paint") {
+      perfomanceMetrics.fcp = time;
+      console.log("FCP ",time);
+    }
+  }
+});
+
+// Start observing the entry types you care about.
+observer.observe({ entryTypes: ["paint"] });
+  </script>
 </body>
 </html>
